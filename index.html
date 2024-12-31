@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Email Validator</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center h-screen">
+
+  <!-- Email Validator Form -->
+  <div class="bg-white p-6 rounded-lg shadow-lg w-96">
+    <h1 class="text-2xl font-bold mb-4 text-gray-700 text-center">Email Validator</h1>
+    <form id="emailForm" class="space-y-4">
+      <!-- Email Input -->
+      <div>
+        <label for="email" class="block text-sm font-medium text-gray-700">Enter Email:</label>
+        <input 
+          type="text" 
+          id="email" 
+          placeholder="example@domain.com" 
+          class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+        />
+      </div>
+      <!-- Validation Message -->
+      <p id="message" class="text-sm"></p>
+      <!-- Submit Button -->
+      <button 
+        type="button" 
+        onclick="validateEmail()" 
+        class="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+      >
+        Validate Email
+      </button>
+    </form>
+  </div>
+
+</body>
+<script>
+  // JavaScript Function to Validate Email
+  function validateEmail() {
+    const emailInput = document.getElementById("email").value;
+    const message = document.getElementById("message");
+
+    // Regular Expression for Email Validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    // Validation Check
+    if (emailRegex.test(emailInput)) {
+      message.textContent = "✅ Valid email address!";
+      message.className = "text-green-600";
+    } else {
+      message.textContent = "❌ Invalid email address!";
+      message.className = "text-red-600";
+    }
+  }
+</script>
+</html>
